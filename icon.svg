@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="plate" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1B2540"/>
+      <stop offset="1" stop-color="#0A0E1B"/>
+    </linearGradient>
+
+    <radialGradient id="dome" cx="0.36" cy="0.30" r="0.85">
+      <stop offset="0" stop-color="#F2F6FC"/>
+      <stop offset="0.55" stop-color="#C3CFE2"/>
+      <stop offset="1" stop-color="#8695AF"/>
+    </radialGradient>
+
+    <radialGradient id="glass" cx="0.4" cy="0.32" r="0.8">
+      <stop offset="0" stop-color="#2E3E5C"/>
+      <stop offset="1" stop-color="#0D1424"/>
+    </radialGradient>
+
+    <radialGradient id="ir" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FF8A6B"/>
+      <stop offset="0.45" stop-color="#F04E32"/>
+      <stop offset="1" stop-color="#F04E32" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="112" fill="url(#plate)"/>
+
+  <!-- Кольцо управления: тот же язык, что у площадки джойстика в карточке -->
+  <circle cx="256" cy="256" r="186" fill="none" stroke="#33425F" stroke-width="10"/>
+  <circle cx="256" cy="256" r="186" fill="none" stroke="#5C90F5" stroke-width="14"
+          stroke-linecap="round" stroke-dasharray="190 1010" stroke-dashoffset="-60"/>
+
+  <!-- Четыре направления: то, чем эта штука действительно управляет -->
+  <g fill="#8AA3C9">
+    <path d="M256 26 l28 42 h-56 z"/>
+    <path d="M256 486 l28 -42 h-56 z"/>
+    <path d="M26 256 l42 -28 v56 z"/>
+    <path d="M486 256 l-42 -28 v56 z"/>
+  </g>
+
+  <!-- Купол сдвинут вверх-вправо: камера отведена от центра, как ручка джойстика -->
+  <g transform="translate(20 -16)">
+    <circle cx="256" cy="256" r="134" fill="#070B15" opacity="0.6"/>
+    <circle cx="256" cy="256" r="126" fill="url(#dome)"/>
+    <circle cx="256" cy="256" r="126" fill="none" stroke="#6E7F9F" stroke-width="4"/>
+
+    <circle cx="256" cy="256" r="84" fill="#141C2E"/>
+    <circle cx="256" cy="256" r="74" fill="url(#glass)"/>
+    <circle cx="256" cy="256" r="74" fill="none" stroke="#42597C" stroke-width="5"/>
+
+    <!-- Единственный тёплый цвет: свечение ИК-подсветки -->
+    <circle cx="256" cy="256" r="50" fill="url(#ir)"/>
+    <circle cx="256" cy="256" r="20" fill="#FFD9CC"/>
+
+    <!-- Блик на стекле -->
+    <ellipse cx="214" cy="210" rx="36" ry="22" fill="#FFFFFF" opacity="0.28"
+             transform="rotate(-32 214 210)"/>
+  </g>
+</svg>

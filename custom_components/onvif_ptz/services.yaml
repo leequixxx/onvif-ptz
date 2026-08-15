@@ -1,0 +1,75 @@
+# Names and descriptions live in translations/*.json; this file is structure only.
+move:
+  fields:
+    entry_id:
+      required: false
+      selector:
+        text:
+    pan:
+      default: 0
+      selector:
+        number: { min: -1, max: 1, step: 0.05, mode: slider }
+    tilt:
+      default: 0
+      selector:
+        number: { min: -1, max: 1, step: 0.05, mode: slider }
+    zoom:
+      default: 0
+      selector:
+        number: { min: -1, max: 1, step: 0.05, mode: slider }
+
+stop:
+  fields:
+    entry_id:
+      required: false
+      selector:
+        text:
+
+step:
+  fields:
+    entry_id:
+      required: false
+      selector:
+        text:
+    pan:
+      default: 0
+      selector:
+        number: { min: -1, max: 1, step: 0.05, mode: slider }
+    tilt:
+      default: 0
+      selector:
+        number: { min: -1, max: 1, step: 0.05, mode: slider }
+    zoom:
+      default: 0
+      selector:
+        number: { min: -1, max: 1, step: 0.05, mode: slider }
+    duration:
+      default: 0.4
+      selector:
+        number: { min: 0.05, max: 10, step: 0.05, unit_of_measurement: s, mode: box }
+
+goto_preset:
+  fields:
+    entry_id:
+      required: false
+      selector:
+        text:
+    preset:
+      required: true
+      selector:
+        text:
+
+set_preset:
+  fields:
+    entry_id:
+      required: false
+      selector:
+        text:
+    name:
+      required: true
+      selector:
+        text:
+    preset:
+      required: false
+      selector:
+        text:

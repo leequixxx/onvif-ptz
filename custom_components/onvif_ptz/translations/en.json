@@ -1,0 +1,93 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "ONVIF PTZ camera",
+        "description": "Pan-tilt-zoom control only. Add the video stream separately via Generic Camera or go2rtc.",
+        "data": {
+          "host": "Host",
+          "port": "Port",
+          "username": "Username",
+          "password": "Password",
+          "name": "Name"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot reach the camera. Check the address, port and firewall rules.",
+      "invalid_auth": "The camera rejected these credentials."
+    },
+    "abort": {
+      "already_configured": "This camera is already set up."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "motion": { "name": "Motion" }
+    },
+    "button": {
+      "left": { "name": "Left" },
+      "right": { "name": "Right" },
+      "up": { "name": "Up" },
+      "down": { "name": "Down" },
+      "stop": { "name": "Stop" }
+    },
+    "number": {
+      "brightness": { "name": "Brightness" },
+      "color_saturation": { "name": "Saturation" },
+      "contrast": { "name": "Contrast" },
+      "sharpness": { "name": "Sharpness" }
+    },
+    "switch": {
+      "night_mode": { "name": "Night mode" },
+      "autofocus": { "name": "Autofocus" }
+    }
+  },
+  "services": {
+    "move": {
+      "name": "Start moving",
+      "description": "Move the camera at the given speed until stop is called. The camera stops on its own after its DefaultPTZTimeout, usually 10 seconds.",
+      "fields": {
+        "entry_id": { "name": "Camera", "description": "Only needed when more than one camera is set up." },
+        "pan": { "name": "Pan", "description": "Negative moves left, positive moves right." },
+        "tilt": { "name": "Tilt", "description": "Negative moves down, positive moves up." },
+        "zoom": { "name": "Zoom", "description": "Ignored on cameras without optical zoom." }
+      }
+    },
+    "stop": {
+      "name": "Stop",
+      "description": "Stop movement immediately.",
+      "fields": {
+        "entry_id": { "name": "Camera", "description": "Only needed when more than one camera is set up." }
+      }
+    },
+    "step": {
+      "name": "Step",
+      "description": "Nudge the camera for a set time, then stop. Meant for arrow buttons.",
+      "fields": {
+        "entry_id": { "name": "Camera", "description": "Only needed when more than one camera is set up." },
+        "pan": { "name": "Pan", "description": "Negative moves left, positive moves right." },
+        "tilt": { "name": "Tilt", "description": "Negative moves down, positive moves up." },
+        "zoom": { "name": "Zoom", "description": "Ignored on cameras without optical zoom." },
+        "duration": { "name": "Duration", "description": "How many seconds to keep moving." }
+      }
+    },
+    "goto_preset": {
+      "name": "Go to preset",
+      "description": "Move the camera to a stored position.",
+      "fields": {
+        "entry_id": { "name": "Camera", "description": "Only needed when more than one camera is set up." },
+        "preset": { "name": "Preset token", "description": "Token as returned by the camera." }
+      }
+    },
+    "set_preset": {
+      "name": "Save preset",
+      "description": "Store the current position under the given name.",
+      "fields": {
+        "entry_id": { "name": "Camera", "description": "Only needed when more than one camera is set up." },
+        "name": { "name": "Name", "description": "Label shown for this position." },
+        "preset": { "name": "Token", "description": "Leave empty to create a new position." }
+      }
+    }
+  }
+}
